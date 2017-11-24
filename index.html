@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script ></script>
-  </head>
+  <head></head>
   <body>
     <div id="app">
       <div>
@@ -10,7 +8,6 @@
           <input ref="filter" @change="changeFilterValue" />
           <button @click="fireRemoveRows">Delete Rows</button>
         </div>
-        
         <el-pagination layout="prev, pager, next" @current-change="changePage" :page-size="pageSize" :total="dataLength" ></el-pagination>
         <el-table :empty-text="'empty'" :data="filteredData" @selection-change="handleSelectionChange" @header-click="sortTableRow"
             v-loading="loading" :default-sort="{prop: 'email', order: 'descending'}" style="width: 100%">
