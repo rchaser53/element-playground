@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script ></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <div class="actionArea">
+          <input ref="filter" @change="changeFilterValue" />
+          <button @click="fireRemoveRows">Delete Rows</button>
+        </div>
+        
+        <el-pagination layout="prev, pager, next" @current-change="changePage" :page-size="pageSize" :total="dataLength" ></el-pagination>
+        <el-table :empty-text="'empty'" :data="filteredData" @selection-change="handleSelectionChange" @header-click="sortTableRow"
+            v-loading="loading" :default-sort="{prop: 'email', order: 'descending'}" style="width: 100%">
+          <!-- <div slot="empty">whatever wanna render for empty data</div> -->
+          <el-table-column type="index" sortable></el-table-column>
+          <el-table-column type="selection" width="55" ></el-table-column>
+          <el-table-column prop="email" label="email" class-name="filter-column" sortable></el-table-column>
+          <el-table-column prop="firstname" label="First Name" sortable></el-table-column>
+          <el-table-column prop="lastname" label="Last Name" class-name="forMobile" sortable></el-table-column>
+          <el-table-column label="Operations">
+            <template slot-scope="scope">
+              <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
+              <el-button size="mini" type="danger" @click="removeTargetRows([scope.row])">Delete</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
+    </div>
+    <script src="bundle.js"></script>
+  </body>
+</html>
