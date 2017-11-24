@@ -5,6 +5,9 @@ const fakeData = require('./fakeData')
 const app = express()
 const server = require('http').createServer(app)
 
+console.log(path.join(__dirname, 'css'), 1)
+app.use('/css', express.static(path.join(__dirname, 'css')));
+
 app.get('/tabledata', async (req, res) => {
   try {
     res.header('Access-Control-Allow-Origin', '*')
